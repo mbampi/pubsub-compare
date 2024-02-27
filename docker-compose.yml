@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  eventproducer:
+    build:
+      context: ./eventstreamingtester
+    depends_on:
+      - broker
+    environment:
+      ROLE: producer
+      # BROKER: kafka
+      # BROKER_ADDRESS: broker:9092
+      BROKER: rabbitmq
+      BROKER_ADDRESS: broker:5672
+
+  eventconsumer:
+    build:
+      context: ./eventstreamingtester
+    depends_on:
+      - broker
+    environment:
+      ROLE: consumer
+      # BROKER: kafka
+      # BROKER_ADDRESS: broker:9092
+      BROKER: rabbitmq
+      BROKER_ADDRESS: broker:5672

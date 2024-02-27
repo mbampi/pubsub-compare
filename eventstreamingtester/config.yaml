@@ -1,0 +1,3 @@
+
+test_config:
+  number_of_events: 5000000
